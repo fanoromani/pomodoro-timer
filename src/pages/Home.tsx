@@ -1,9 +1,9 @@
 import { Header } from "../components/Header";
 
-export function History() {
+export function Home() {
   return (
     <div>
-      <h1>History</h1>
+      <h1>Home</h1>
     </div>
   );
 }
