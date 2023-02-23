@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { formatDistanceToNow } from "date-fns";
 import { CyclesContext } from "../../contexts/CyclesContext";
 import { HistoryContainer, HistoryList, Status } from "./styles";
 
@@ -24,7 +25,11 @@ export function History() {
                 <tr key={cycle.id}>
                   <td>{cycle.task}</td>
                   <td>{cycle.minutesAmount} minutes</td>
-                  <td>{cycle.startDate.toISOString()}</td>
+                  <td>
+                    {formatDistanceToNow(cycle.startDate, {
+                      addSuffix: true,
+                    })}
+                  </td>
                   <td>
                     {cycle.finishDate && (
                       <Status statusColor="green">Completed</Status>
