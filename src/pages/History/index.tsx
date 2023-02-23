@@ -19,14 +19,26 @@ export function History() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Task</td>
-              <td>20 minutes</td>
-              <td>about 2 months ago</td>
-              <td>
-                <Status statusColor="green">Completed</Status>
-              </td>
-            </tr>
+            {cycles.map((cycle) => {
+              return (
+                <tr key={cycle.id}>
+                  <td>{cycle.task}</td>
+                  <td>{cycle.minutesAmount} minutes</td>
+                  <td>{cycle.startDate.toISOString()}</td>
+                  <td>
+                    {cycle.finishDate && (
+                      <Status statusColor="green">Completed</Status>
+                    )}
+                    {cycle.stopDate && (
+                      <Status statusColor="red">Interrupted</Status>
+                    )}
+                    {!cycle.finishDate && !cycle.stopDate && (
+                      <Status statusColor="yellow">On going</Status>
+                    )}
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </HistoryList>
